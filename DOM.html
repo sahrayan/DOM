@@ -25,8 +25,11 @@
 
         let listElements = list.querySelectorAll("il")
 
-        console.log("la liste", list)
-        console.log("les elements", listElements)
+        listElements.forEach(function(element){
+
+            element.style.color = "red"
+        })
+        
 
     </script>
 </body>
