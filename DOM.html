@@ -59,12 +59,12 @@
                 }
             }
             function showReactions(type, clickedbox){
-                clickedbox.classList.add("type")
+                clickedbox.classList.add(type)
                 if(type !== "success"){
                     setTimeout(function(){
                         clickedbox.classList.remove(type)
                     }, 800)
-
+                }
             }
             
             
@@ -85,19 +85,21 @@
                     if(i == nb){
                         newbox.classList.add("box-clicked")
                         if(nb == board.children.length){
-                            alert("VICTOIRE !")
+                            board.querySelectorAll(".box").forEach(function(box){
+                                showReactions("success", box)
+                            })
                         }
                         nb++
                     }
                     else if(i > nb){
-                        alert("Erreur, recommencez !")
+                        showReactions("error", newbox)
                         nb = 1
                         board.querySelectorAll(".box-clicked").forEach(function(clickedbox){
                             clickedbox.classList.remove("box-clicked")
                         })
                     }
                     else{
-                        alert("Case déja cliquée !")
+                        showReactions("notice", newbox)
                     }
                 })
             }
